@@ -1,0 +1,677 @@
+:root {
+    /* Mga Karaniwang Kulay */
+    --primary:          #0056b3;
+    --primary-light:    #007bff;
+    --accent:           #17a2b8;
+    --success:          #28a745;
+    --warning:          #ffc107;
+    --danger:           #dc3545;
+
+    /* Mga Background */
+    --bg-base:          #f4f6f8;
+    --bg-surface:       #ffffff;
+    --card-bg:          #ffffff;
+    --input-bg:         #ffffff;
+
+    /* Mga Border at Teksto */
+    --border:           #dee2e6;
+    --border-hover:     #adb5bd;
+    --text-primary:     #212529;
+    --text-secondary:   #495057;
+    --text-muted:       #6c757d;
+
+    /* Layout at Sizing */
+    --sidebar-width:    250px;
+    --radius-sm:        4px;
+    --radius-md:        8px;
+    --radius-lg:        12px;
+    --shadow-sm:        0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* ── Base Reset ── */
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
+
+body {
+    margin: 0; 
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+a { 
+    color: var(--primary-light); 
+    text-decoration: none; 
+}
+
+a:hover { 
+    color: var(--primary); 
+    text-decoration: underline;
+}
+
+/* ── App Layout ── */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 40px 30px 30px 30px; 
+    min-height: 100vh;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand-icon {
+    width: 32px; 
+    height: 32px;
+    background-color: var(--primary-light);
+    border-radius: var(--radius-sm);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.brand-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+}
+
+.sidebar-role-badge {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.badge.bg-primary-soft, 
+.badge.bg-client-soft {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge.bg-primary-soft { background: #e6f2ff; color: var(--primary); }
+.badge.bg-client-soft { background: #e8f5e9; color: var(--success); }
+
+/* Mga Link sa Nabigasyon */
+.sidebar-nav {
+    padding: 15px 0;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.nav-section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 10px 20px 5px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    color: var(--text-secondary);
+    transition: background 0.15s, color 0.15s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.sidebar-link:hover {
+    background-color: #f8f9fa;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.sidebar-link.active {
+    background-color: #e6f2ff;
+    color: var(--primary);
+    border-left-color: var(--primary);
+    font-weight: 500;
+}
+
+.sidebar-link.active i {
+    color: var(--primary);
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border);
+    background-color: #fafbfc;
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.user-avatar {
+    width: 36px; 
+    height: 36px;
+    background-color: var(--text-muted);
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-weight: 600;
+    color: white;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.user-role {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.logout-link {
+    color: var(--danger);
+    padding: 0;
+    border: none;
+}
+.logout-link:hover {
+    background-color: transparent;
+    color: #bd2130;
+}
+
+.card-adhub, .stat-card, .file-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px; 
+    overflow: hidden; 
+}
+
+.stat-card {
+    padding: 24px !important; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 155px;
+    gap: 12px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.stat-card .text-muted,
+.stat-card .small,
+.stat-card div:last-child {
+    margin-top: auto;
+}
+
+.card-adhub-header {
+    padding: 18px 24px; /
+    border-bottom: 1px solid var(--border);
+    background-color: #fafbfc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-adhub-body {
+    padding: 24px !important; 
+}
+
+
+.card-adhub > .activity-feed,
+.card-adhub > .activity-item,
+.card-adhub > .deadline-item,
+.card-adhub > .budget-bar-row,
+.card-adhub > .budget-meter,
+.card-adhub > p,
+.card-adhub > span,
+.card-adhub > div:not(.card-adhub-header):not(.card-adhub-body) {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+
+.card-adhub > *:first-child:not(.card-adhub-header):not(.card-adhub-body) {
+    margin-top: 24px !important;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1px solid var(--border);
+}
+.activity-item:last-child {
+    border-bottom: none;
+    padding-bottom: 24px !important; /* Dagdag na espasyo sa pinaka-ibaba */
+}
+
+.deadline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1px solid var(--border);
+}
+.deadline-item:last-child {
+    border-bottom: none;
+    padding-bottom: 24px !important;
+}
+
+.budget-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1px solid var(--border);
+}
+.budget-bar-row:last-child {
+    border-bottom: none;
+    padding-bottom: 24px !important;
+}
+
+/* ── Kanban / Campaign Cards (FIXED: Professional spacing, alignment and layout) ── */
+.campaign-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 20px !important;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.campaign-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.campaign-card .campaign-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 2px 0;
+    line-height: 1.4;
+}
+
+.campaign-card .campaign-client {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0 0 4px 0;
+}
+
+.campaign-card .campaign-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.campaign-card .campaign-meta i {
+    color: var(--primary-light);
+    font-size: 11px;
+}
+
+/* Symmetrical at pantay na footer para sa Budget at Actions */
+.campaign-card .campaign-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    margin-top: 4px;
+}
+
+.campaign-card .campaign-budget {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Compact, symmetrical action buttons */
+.campaign-card .campaign-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.campaign-card .campaign-actions .btn {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0 !important; 
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-heading {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px; 
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.main-content > .section-header:first-of-type {
+    margin-top: 0 !important;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.table-adhub {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-adhub thead th {
+    background-color: #f8f9fa;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 12px 24px; 
+    border-bottom: 2px solid var(--border);
+    text-align: left;
+}
+
+.table-adhub tbody tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.table-adhub tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table-adhub td {
+    padding: 14px 24px; 
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+}
+.status-planning     { background: #e2e3e5; color: #383d41; }
+.status-active       { background: #cce5ff; color: #004085; }
+.status-under-review { background: #fff3cd; color: #856404; }
+.status-approved     { background: #d4edda; color: #155724; }
+.status-completed    { background: #d4edda; color: #155724; }
+.status-pending      { background: #e2e3e5; color: #383d41; }
+.status-revision     { background: #f8d7da; color: #721c24; }
+
+.btn-primary-adhub, .btn-accent-adhub {
+    background-color: var(--primary-light);
+    color: #fff;
+    border: 1px solid var(--primary-light);
+    border-radius: var(--radius-sm);
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block; 
+    margin-bottom: 16px; /* Para sa sapat na clearance sa ibaba */
+}
+.btn-primary-adhub:hover, .btn-accent-adhub:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-adhub {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-sm);
+    padding: 6px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 16px; 
+}
+.btn-outline-adhub:hover {
+    background-color: #f8f9fa;
+}
+
+/* Reset ng margin sa loob ng mga flex container (Topbar, Headers, atbp.) upang hindi lumipad ang spacing */
+.topbar .btn-primary-adhub,
+.topbar .btn-accent-adhub,
+.topbar .btn-outline-adhub,
+.modal-footer .btn-primary-adhub,
+.modal-footer .btn-outline-adhub,
+.card-adhub-header .btn-primary-adhub,
+.card-adhub-header .btn-outline-adhub {
+    margin-bottom: 0 !important;
+}
+
+/* ── Mga Form at Dropdowns ── */
+.form-control, .form-select {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background-color: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px; 
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-light);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Reset ng margin-bottom para sa mga inline search inputs */
+.topbar .form-control,
+.topbar .form-select,
+.topbar-search input,
+.card-adhub-header .form-control,
+.card-adhub-header .form-select,
+.modal-footer .form-control,
+.modal-footer .form-select {
+    margin-bottom: 0 !important;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+/* ── Mga Search Containers (Symmetrical at Normal ang Laki) ── */
+.search-box,
+.search-container,
+.search-bar,
+.search-wrapper,
+.card-adhub-body .form-control[placeholder*="Search"],
+.main-content .form-control[placeholder*="Search"],
+.card-adhub-body .form-control[placeholder*="search"],
+.main-content .form-control[placeholder*="search"] {
+    max-width: 320px !important; 
+    width: 100%;
+}
+
+/* Symmetrical alignment ng search elements */
+.search-box, .search-container, .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    background: var(--input-bg);
+}
+
+.search-box input, .search-container input, .search-bar input {
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    width: 100% !important;
+    margin-left: 8px;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* ── Topbar (Itaas na Bar) ── */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px; 
+    background-color: var(--bg-surface);
+    padding: 15px 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.topbar-search {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    width: 250px;
+    background: var(--input-bg);
+}
+.topbar-search input {
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+/* ── Login Page (Pahina ng Pag-login) ── */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-base);
+}
+
+.login-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.login-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.login-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 25px;
+}

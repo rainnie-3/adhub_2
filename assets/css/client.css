@@ -1,0 +1,80 @@
+.approval-card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.approval-card .approval-title { 
+    font-size: 15px; 
+    font-weight: 600; 
+    color: #212529;
+    margin-bottom: 5px;
+}
+
+.approval-card .approval-campaign { 
+    font-size: 13px; 
+    color: #007bff; 
+    margin-bottom: 10px; 
+}
+
+.approval-card .approval-desc { 
+    font-size: 13px; 
+    color: #495057; 
+    margin-bottom: 15px; 
+}
+
+/* Budget meter */
+.budget-meter { 
+    margin-bottom: 20px; 
+}
+
+.budget-meter-labels { 
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 12px; 
+    color: #6c757d; 
+    margin-bottom: 5px; 
+}
+
+.budget-meter-bar { 
+    height: 8px; 
+    background-color: #e9ecef; 
+    border-radius: 4px; 
+    overflow: hidden; 
+}
+
+.budget-meter-fill { 
+    height: 100%; 
+    background-color: #28a745; /* Green for budget */
+    border-radius: 4px; 
+}
+
+/* Stat row for budget page */
+.budget-stat-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.budget-stat {
+    flex: 1; 
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.budget-stat .bs-label { 
+    font-size: 12px; 
+    text-transform: uppercase; 
+    color: #6c757d; 
+    margin-bottom: 5px; 
+}
+
+.budget-stat .bs-value { 
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    color: #212529; 
+}
