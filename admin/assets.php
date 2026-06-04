@@ -11,6 +11,9 @@ requireLogin('admin');
 $db      = getDB();
 $msg     = '';
 $uploadDir = __DIR__ . '/../assets/uploads/';
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0755, true);
+}
 
 // ── POST handlers ────────────────────────────────────────────
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
