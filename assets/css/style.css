@@ -675,3 +675,156 @@ a:hover {
     font-size: 13px;
     margin-bottom: 25px;
 }
+
+/* Desktop layout optimization */
+@media (min-width: 992px) {
+    :root {
+        --sidebar-width: 232px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .main-content {
+        width: calc(100% - var(--sidebar-width));
+        max-width: 1360px;
+        margin-left: var(--sidebar-width);
+        margin-right: auto;
+        padding: 24px clamp(20px, 2.2vw, 32px) 28px;
+    }
+
+    .sidebar {
+        width: var(--sidebar-width);
+    }
+
+    .sidebar-brand {
+        padding: 16px 18px;
+    }
+
+    .sidebar-role-badge {
+        padding: 10px 18px;
+    }
+
+    .sidebar-link {
+        padding: 9px 18px;
+    }
+
+    .nav-section-label {
+        padding: 9px 18px 4px;
+    }
+
+    .sidebar-footer {
+        padding: 16px 18px;
+    }
+
+    .topbar,
+    .page-header {
+        margin-bottom: 18px;
+    }
+
+    .page-heading,
+    .page-title {
+        font-size: clamp(1.35rem, 1.6vw, 1.65rem);
+        line-height: 1.2;
+    }
+
+    .page-subtitle {
+        margin-bottom: 0;
+        font-size: 13px;
+    }
+
+    .section-header {
+        margin-top: 24px;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+    }
+
+    .row {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+    }
+
+    .card-adhub,
+    .stat-card,
+    .file-card,
+    .approval-card,
+    .budget-stat,
+    .chart-container,
+    .campaign-card {
+        border-radius: 8px;
+        margin-bottom: 16px;
+    }
+
+    .stat-card {
+        min-height: 124px;
+        padding: 18px !important;
+        gap: 8px;
+    }
+
+    .stat-value {
+        font-size: clamp(1.45rem, 1.8vw, 1.8rem);
+    }
+
+    .card-adhub-header,
+    .card-adhub-body {
+        padding: 16px 18px !important;
+    }
+
+    .card-adhub > .activity-feed,
+    .card-adhub > .activity-item,
+    .card-adhub > .deadline-item,
+    .card-adhub > .budget-bar-row,
+    .card-adhub > .budget-meter,
+    .card-adhub > p,
+    .card-adhub > span,
+    .card-adhub > div:not(.card-adhub-header):not(.card-adhub-body) {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+    }
+
+    .card-adhub > *:first-child:not(.card-adhub-header):not(.card-adhub-body) {
+        margin-top: 18px !important;
+    }
+
+    .activity-item,
+    .deadline-item,
+    .budget-bar-row {
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+    }
+
+    .campaign-card {
+        padding: 16px !important;
+    }
+
+    .table-adhub thead th,
+    .table-adhub td {
+        padding: 11px 16px;
+    }
+
+    .form-control,
+    .form-select {
+        margin-bottom: 14px;
+    }
+
+    .btn-primary-adhub,
+    .btn-accent-adhub,
+    .btn-outline-adhub {
+        margin-bottom: 12px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .main-content {
+        max-width: 1400px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1400px) {
+    .main-content {
+        max-width: calc(100vw - var(--sidebar-width));
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+}
